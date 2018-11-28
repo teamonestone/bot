@@ -106,6 +106,29 @@ void digital_write(uint8_t pin) {
 uint16_t analog_read(uint8_t pin) {
     // check if input is in range
     if (pin < 1 || pin > 6) return 0;
+
+    switch(pin) {
+        case 1:
+            return analogRead(BOT_A1);
+
+        case 2:
+            return analogRead(BOT_A2);
+
+        case 3:
+            return analogRead(BOT_A3);
+
+        case 4:
+            return analogRead(BOT_A4);
+
+        case 5:
+            return analogRead(BOT_A5);
+
+        case 6:
+            return analogRead(BOT_A6);
+        
+        default:
+            return 0;
+    }
 }
 
 ////////////////////
