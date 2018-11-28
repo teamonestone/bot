@@ -17,40 +17,46 @@
 ///////////////////////
 
 // analog ports 
-#define BOT_A1
-#define BOT_A2
-#define BOT_A3
-#define BOT_A4
-#define BOT_A5
-#define BOT_A6
+#define BOT_A1 10
+#define BOT_A2 11
+#define BOT_A3 12
+#define BOT_A4 13
+#define BOT_A5 14
+#define BOT_A6 15
 
 // digital ports
-#define BOT_D1
-#define BOT_D2
-#define BOT_D3
-#define BOT_D4
-#define BOT_D5
-#define BOT_D6
+#define BOT_D1 48
+#define BOT_D2 49
+#define BOT_D3 46
+#define BOT_D4 47
+#define BOT_D5 44
+#define BOT_D6 45
 
 // button ports
-#define BOT_B1
-#define BOT_B2
-#define BOT_B3
-#define BOT_B4
+#define BOT_B1 41
+#define BOT_B2 40
+#define BOT_B3 43
+#define BOT_B4 42
 
 // servo ports
-#define BOT_S1
-#define BOT_S2
-#define BOT_S3
-#define BOT_S4
+#define BOT_S1 12
+#define BOT_S2 11
+#define BOT_S3 10
+#define BOT_S4  9
+
+// servo enable port
+#define BOT_SE1 28
+#define BOT_SE2 29
+#define BOT_SE3 30
+#define BOT_SE4 31
 
 // led ports 
-#define BOT_LED1
-#define BOT_BOT_LED2
-#define BOT_BOT_LED3
-#define BOT_BOT_LED4
-#define BOT_BOT_LED5
-#define BOT_BOT_LED6
+#define BOT_LED1 32
+#define BOT_LED2 33
+#define BOT_LED3 34
+#define BOT_LED4 35
+#define BOT_LED5 36
+#define BOT_LED6 37
 
 class bot
 {
@@ -63,6 +69,22 @@ class bot
 		bot();
 		~bot();
 		
+		// basic functions
+		bool button(uint8_t button);				// get the state of the button
+		void wait_botton(uint8_t button);			// wait until the button is pressed
+		void leds_on();								// turn all leds on
+		void leds_off();							// turn all leds off
+		void led_on(uint8_t led);					// turn led on
+		void led_off(uint8_t led);					// turn led off
+
+		// digital io functions
+		void set_io_mode(uint8_t pin);				// set io mode
+		bool digital_read(uint8_t pin);				// read digital pin
+		void digital_write(uint8_t pin);			// wirte to digital pin
+
+		// analog io functions
+		uint16_t analog_read(uint8_t pin);			// read analog pin
+
 		// util functions
         uint16_t get_version();                                         // get the version of the library
 		void delay(uint32_t _delay_time);			                    // delay based on millis() (milliseconds resolution)
