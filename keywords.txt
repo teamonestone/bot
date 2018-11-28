@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map For ExampleLibrary
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+bot	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+get_version	KEYWORD2
+delay	KEYWORD2
+delay_f	KEYWORD2
+micros_delay	KEYWORD2
+micros_delay_f	KEYWORD2
+
+button	KEYWORD2
+wait_botton	KEYWORD2
+leds_on	KEYWORD2
+leds_off	KEYWORD2
+led_on	KEYWORD2
+led_off	KEYWORD2
+
+set_io_mode	KEYWORD2
+digital_read	KEYWORD2
+digital_write	KEYWORD2
+
+analog_read	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
