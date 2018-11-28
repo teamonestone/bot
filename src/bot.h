@@ -71,16 +71,16 @@ class bot
 		
 		// basic functions
 		bool button(uint8_t button);				// get the state of the button
-		void wait_botton(uint8_t button);			// wait until the button is pressed
+		void wait_button(uint8_t button);			// wait until the button is pressed
 		void leds_on();								// turn all leds on
 		void leds_off();							// turn all leds off
 		void led_on(uint8_t led);					// turn led on
 		void led_off(uint8_t led);					// turn led off
 
 		// digital io functions
-		void set_io_mode(uint8_t pin);				// set io mode
-		bool digital_read(uint8_t pin);				// read digital pin
-		void digital_write(uint8_t pin);			// wirte to digital pin
+		void set_io_mode(uint8_t pin, uint8_t pin_mode);	// set io mode
+		bool digital_read(uint8_t pin);						// read digital pin
+		void digital_write(uint8_t pin, bool state);		// wirte to digital pin
 
 		// analog io functions
 		uint16_t analog_read(uint8_t pin);			// read analog pin
