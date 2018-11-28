@@ -74,7 +74,7 @@ bool button(uint8_t button) {
     }
 }
 
-void wait_botton(uint8_t button) {
+void wait_button(uint8_t button) {
     // check if input is in range
     if (button < 1 || button > 4) return;
 
@@ -158,27 +158,27 @@ void led_off(uint8_t led) {
 
     switch(led) {
         case 1: 
-            digitalWrite(BOT_LED1, 1);
+            digitalWrite(BOT_LED1, 0);
         break;
 
         case 2:
-            digitalWrite(BOT_LED2, 1);
+            digitalWrite(BOT_LED2, 0);
         break;
 
         case 3:
-            digitalWrite(BOT_LED3, 1);
+            digitalWrite(BOT_LED3, 0);
         break;
 
         case 4:
-            digitalWrite(BOT_LED4, 1);
+            digitalWrite(BOT_LED4, 0);
         break;
 
         case 5:
-            digitalWrite(BOT_LED5, 1);
+            digitalWrite(BOT_LED5, 0);
         break;
 
         case 6:
-            digitalWrite(BOT_LED6, 1);
+            digitalWrite(BOT_LED6, 0);
         break;
 
         default:
@@ -190,19 +190,101 @@ void led_off(uint8_t led) {
 // digital io functions //
 //////////////////////////
 
-void set_io_mode(uint8_t pin) {
+void set_io_mode(uint8_t pin, uint8_t pin_mode) {
     // check if input is in range
     if (pin < 1 || pin > 6) return;
+
+    switch(pin) {
+        case 1:
+            PinMode(BOT_D1, pin_mode);
+        break;
+
+        case 2:
+            PinMode(BOT_D2, pin_mode);
+        break;
+
+        case 3:
+            PinMode(BOT_D3, pin_mode);
+        break;
+
+        case 4:
+            PinMode(BOT_D4, pin_mode);
+        break;
+
+        case 5:
+            PinMode(BOT_D5, pin_mode);
+        break;
+
+        case 6:
+            PinMode(BOT_D6, pin_mode);
+        break;
+
+        default:
+            return;
+    }
+
 }
 
 bool digital_read(uint8_t pin) {
     // check if input is in range
     if (pin < 1 || pin > 6) return false;
+
+    switch(pin) {
+        case 1:
+            return digitalRead(BOT_D1);
+        
+        case 2:
+            return digitalRead(BOT_D2);
+        
+        case 3:
+            return digitalRead(BOT_D3);
+        
+        case 4:
+            return digitalRead(BOT_D4);
+
+        case 5:
+            return digitalRead(BOT_D5);
+        
+        case 6:
+            return digitalRead(BOT_D6);
+
+        default:
+            return false;
+    }
 }
 
-void digital_write(uint8_t pin) {
+void digital_write(uint8_t pin, bool state) {
     // check if input is in range
     if (pin < 1 || pin > 6) return;
+
+    switch(pin) {
+        case 1: 
+            digitalWrite(BOT_D1, state);
+        break;
+
+        case 2:
+            digitalWrite(BOT_D2, state);
+        break;
+
+        case 3:
+            digitalWrite(BOT_D3, state);
+        break;
+
+        case 4:
+            digitalWrite(BOT_D4, state);
+        break;
+
+        case 5:
+            digitalWrite(BOT_D5, state);
+        break;
+
+        case 6:
+            digitalWrite(BOT_D6, state);
+        break;
+
+        default:
+            return;
+    }
 }
 
 /////////////////////////
