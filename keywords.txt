@@ -19,7 +19,7 @@ micros_delay	KEYWORD2
 micros_delay_f	KEYWORD2
 
 button	KEYWORD2
-wait_botton	KEYWORD2
+wait_button	KEYWORD2
 leds_on	KEYWORD2
 leds_off	KEYWORD2
 led_on	KEYWORD2
