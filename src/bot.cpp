@@ -48,10 +48,17 @@ bot::bot() {
 bot::~bot() {
     ;
 }
+
 /////////////////////
 // basic functions //
 /////////////////////
 
+/**
+ * Read the state of a button.
+ * 
+ * @param button number of selected button
+ * @retrun 1 if button is pressed, else 0
+ */
 bool bot::button(uint8_t button) {
     // check if input is in range
     if (button < 1 || button > 4) return false;
@@ -72,6 +79,9 @@ bool bot::button(uint8_t button) {
         default:
             return false;
     }
+
+    // button debounce
+    delay(20);
 }
 
 void bot::wait_button(uint8_t button) {
@@ -98,6 +108,8 @@ void bot::wait_button(uint8_t button) {
         default:
             return;
     }
+    // button debounce
+    delay(20);
 }
 
 void bot::leds_on() {
