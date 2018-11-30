@@ -52,7 +52,7 @@ bot::~bot() {
 // basic functions //
 /////////////////////
 
-bool button(uint8_t button) {
+bool bot::button(uint8_t button) {
     // check if input is in range
     if (button < 1 || button > 4) return false;
 
@@ -74,7 +74,7 @@ bool button(uint8_t button) {
     }
 }
 
-void wait_button(uint8_t button) {
+void bot::wait_button(uint8_t button) {
     // check if input is in range
     if (button < 1 || button > 4) return;
 
@@ -100,7 +100,7 @@ void wait_button(uint8_t button) {
     }
 }
 
-void leds_on() {
+void bot::leds_on() {
     digitalWrite(BOT_LED1, 1);
     digitalWrite(BOT_LED2, 1);
     digitalWrite(BOT_LED3, 1);
@@ -109,7 +109,7 @@ void leds_on() {
     digitalWrite(BOT_LED6, 1);
 }
 
-void leds_off() {
+void bot::leds_off() {
     digitalWrite(BOT_LED1, 0);
     digitalWrite(BOT_LED2, 0);
     digitalWrite(BOT_LED3, 0);
@@ -118,7 +118,7 @@ void leds_off() {
     digitalWrite(BOT_LED6, 0);
 }
 
-void led_on(uint8_t led) {
+void bot::led_on(uint8_t led) {
     // check if input is in range
     if (led < 1 || led > 6) return;
 
@@ -152,7 +152,7 @@ void led_on(uint8_t led) {
     }
 }
 
-void led_off(uint8_t led) {
+void bot::led_off(uint8_t led) {
     // check if input is in range
     if (led < 1 || led > 6) return;
 
@@ -190,7 +190,7 @@ void led_off(uint8_t led) {
 // digital io functions //
 //////////////////////////
 
-void set_io_mode(uint8_t pin, uint8_t pin_mode) {
+void bot::set_io_mode(uint8_t pin, uint8_t pin_mode) {
     // check if input is in range
     if (pin < 1 || pin > 6) return;
 
@@ -225,7 +225,7 @@ void set_io_mode(uint8_t pin, uint8_t pin_mode) {
 
 }
 
-bool digital_read(uint8_t pin) {
+bool bot::digital_read(uint8_t pin) {
     // check if input is in range
     if (pin < 1 || pin > 6) return false;
 
@@ -253,7 +253,7 @@ bool digital_read(uint8_t pin) {
     }
 }
 
-void digital_write(uint8_t pin, bool state) {
+void bot::digital_write(uint8_t pin, bool state) {
     // check if input is in range
     if (pin < 1 || pin > 6) return;
 
@@ -291,7 +291,7 @@ void digital_write(uint8_t pin, bool state) {
 // analog io functions //
 /////////////////////////
 
-uint16_t analog_read(uint8_t pin) {
+uint16_t bot::analog_read(uint8_t pin) {
     // check if input is in range
     if (pin < 1 || pin > 6) return 0;
 
@@ -355,13 +355,13 @@ void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)) {
     }
 }
 
-void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
+void bot::delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
     uint64_t _time_to_wait = millis() + _delay_time;
 
     while (millis() <= _time_to_wait && _condition(_time_to_wait));
 }
 
-void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
+void bot::micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
     uint64_t _time_to_wait = micros() + _delay_time;
 
     while (micros() <= _time_to_wait && _condition(_time_to_wait));
