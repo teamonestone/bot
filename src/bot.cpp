@@ -84,6 +84,11 @@ bool bot::button(uint8_t button) {
     delay(20);
 }
 
+/**
+ * Wait until a button is pressed.
+ * 
+ * @param button number of selected button
+ */
 void bot::wait_button(uint8_t button) {
     // check if input is in range
     if (button < 1 || button > 4) return;
@@ -112,6 +117,9 @@ void bot::wait_button(uint8_t button) {
     delay(20);
 }
 
+/**
+ * Turn all leds on.
+ */
 void bot::leds_on() {
     digitalWrite(BOT_LED1, 1);
     digitalWrite(BOT_LED2, 1);
@@ -121,6 +129,9 @@ void bot::leds_on() {
     digitalWrite(BOT_LED6, 1);
 }
 
+/**
+ * Turn all leds off.
+ */
 void bot::leds_off() {
     digitalWrite(BOT_LED1, 0);
     digitalWrite(BOT_LED2, 0);
@@ -130,6 +141,11 @@ void bot::leds_off() {
     digitalWrite(BOT_LED6, 0);
 }
 
+/**
+ * Turn a specific led on.
+ * 
+ * @param led number of selected led
+ */
 void bot::led_on(uint8_t led) {
     // check if input is in range
     if (led < 1 || led > 6) return;
@@ -164,6 +180,11 @@ void bot::led_on(uint8_t led) {
     }
 }
 
+/**
+ * Turn a specific led off.
+ * 
+ * @param led number of selected led
+ */
 void bot::led_off(uint8_t led) {
     // check if input is in range
     if (led < 1 || led > 6) return;
@@ -202,6 +223,12 @@ void bot::led_off(uint8_t led) {
 // digital io functions //
 //////////////////////////
 
+/**
+ * Turn a specific led off.
+ * 
+ * @param pin number of selected pin.
+ * @param pin_mode pin is input -> use INPUT, pin is output -> OUTPUT
+ */
 void bot::set_io_mode(uint8_t pin, uint8_t pin_mode) {
     // check if input is in range
     if (pin < 1 || pin > 6) return;

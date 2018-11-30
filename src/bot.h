@@ -71,11 +71,11 @@ class bot
 		
 		// basic functions
 		bool button(uint8_t button);				///< Read the state of a button.
-		void wait_button(uint8_t button);			///< wait until the button is pressed
-		void leds_on();								///< turn all leds on
-		void leds_off();							///< turn all leds off
-		void led_on(uint8_t led);					///< turn led on
-		void led_off(uint8_t led);					///< turn led off
+		void wait_button(uint8_t button);			///< Wait until a button is pressed.
+		void leds_on();								///< Turn all leds on.
+		void leds_off();							///< Turn all leds off.
+		void led_on(uint8_t led);					///< Turn a specific led on.
+		void led_off(uint8_t led);					///< Turn a specific led off.
 
 		// digital io functions
 		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< set io mode
