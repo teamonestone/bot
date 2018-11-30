@@ -70,29 +70,29 @@ class bot
 		~bot();
 		
 		// basic functions
-		bool button(uint8_t button);				// get the state of the button
-		void wait_button(uint8_t button);			// wait until the button is pressed
-		void leds_on();								// turn all leds on
-		void leds_off();							// turn all leds off
-		void led_on(uint8_t led);					// turn led on
-		void led_off(uint8_t led);					// turn led off
+		bool button(uint8_t button);				///< Read the state of a button.
+		void wait_button(uint8_t button);			///< Wait until a button is pressed.
+		void leds_on();								///< Turn all leds on.
+		void leds_off();							///< Turn all leds off.
+		void led_on(uint8_t led);					///< Turn a specific led on.
+		void led_off(uint8_t led);					///< Turn a specific led off.
 
 		// digital io functions
-		void set_io_mode(uint8_t pin, uint8_t pin_mode);	// set io mode
-		bool digital_read(uint8_t pin);						// read digital pin
-		void digital_write(uint8_t pin, bool state);		// wirte to digital pin
+		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< set io mode
+		bool digital_read(uint8_t pin);						///< read digital pin
+		void digital_write(uint8_t pin, bool state);		///< wirte to digital pin
 
 		// analog io functions
-		uint16_t analog_read(uint8_t pin);			// read analog pin
+		uint16_t analog_read(uint8_t pin);			///< read analog pin
 
 		// util functions
-        uint16_t get_version();                                         						// get the version of the library
-		void delay(uint32_t _delay_time);			                    						// delay based on millis() (milliseconds resolution)
-		void micro_delay(uint32_t _delay_time);		                    						// delay based on micros() (microseconds resolution)
-        void delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));							// delay based on millis() (milliseconds resolution) with function funct
-		void micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));					// delay based on micros() (microseconds resolution) with funktion funct
-		void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));			// delay based on millis() (milliseconds resolution) with additional break condition
-		void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));	// delay based on micros() (microseconds resolution) with additional break condition
+        uint16_t get_version();                                         						///< get the version of the library
+		void delay(uint32_t _delay_time);			                    						///< delay based on millis() (milliseconds resolution)
+		void micro_delay(uint32_t _delay_time);		                    						///< delay based on micros() (microseconds resolution)
+        void delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));							///< delay based on millis() (milliseconds resolution) with function funct
+		void micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));						///< delay based on micros() (microseconds resolution) with funktion funct
+		void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));			///< delay based on millis() (milliseconds resolution) with additional break condition
+		void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));	///< delay based on micros() (microseconds resolution) with additional break condition
 };
 
 #endif
