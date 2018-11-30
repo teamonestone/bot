@@ -196,27 +196,27 @@ void set_io_mode(uint8_t pin, uint8_t pin_mode) {
 
     switch(pin) {
         case 1:
-            PinMode(BOT_D1, pin_mode);
+            pinMode(BOT_D1, pin_mode);
         break;
 
         case 2:
-            PinMode(BOT_D2, pin_mode);
+            pinMode(BOT_D2, pin_mode);
         break;
 
         case 3:
-            PinMode(BOT_D3, pin_mode);
+            pinMode(BOT_D3, pin_mode);
         break;
 
         case 4:
-            PinMode(BOT_D4, pin_mode);
+            pinMode(BOT_D4, pin_mode);
         break;
 
         case 5:
-            PinMode(BOT_D5, pin_mode);
+            pinMode(BOT_D5, pin_mode);
         break;
 
         case 6:
-            PinMode(BOT_D6, pin_mode);
+            pinMode(BOT_D6, pin_mode);
         break;
 
         default:
@@ -347,7 +347,7 @@ void bot::delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)) {
     }
 }
 
-void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t))) {
+void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)) {
     uint64_t _time_to_wait = micros() + _delay_time;
 
     while (micros() <= _time_to_wait) {
@@ -358,11 +358,11 @@ void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t))) {
 void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
     uint64_t _time_to_wait = millis() + _delay_time;
 
-    while (millis() <= _time_to_wait && _condition(_time_to_wait);
+    while (millis() <= _time_to_wait && _condition(_time_to_wait));
 }
 
 void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
     uint64_t _time_to_wait = micros() + _delay_time;
 
-    while (micros() <= _time_to_wait && _condition(_time_to_wait);
+    while (micros() <= _time_to_wait && _condition(_time_to_wait));
 }

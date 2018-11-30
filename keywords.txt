@@ -17,8 +17,8 @@ delay	KEYWORD2
 delay_f	KEYWORD2
 micros_delay	KEYWORD2
 micros_delay_f	KEYWORD2
-delay_with_condition KEYWORD2
-micro_delay_with_condition KEYWORD2
+delay_with_condition	KEYWORD2
+micro_delay_with_condition	KEYWORD2
 
 button	KEYWORD2
 wait_button	KEYWORD2
