@@ -90,7 +90,7 @@ class bot
 		void delay(uint32_t _delay_time);			                    						// delay based on millis() (milliseconds resolution)
 		void micro_delay(uint32_t _delay_time);		                    						// delay based on micros() (microseconds resolution)
         void delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));							// delay based on millis() (milliseconds resolution) with function funct
-		void micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)));					// delay based on micros() (microseconds resolution) with funktion funct
+		void micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));					// delay based on micros() (microseconds resolution) with funktion funct
 		void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));			// delay based on millis() (milliseconds resolution) with additional break condition
 		void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));	// delay based on micros() (microseconds resolution) with additional break condition
 };
