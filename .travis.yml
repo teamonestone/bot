@@ -25,7 +25,8 @@ install:
    #- arduino --install-library "Adafruit ILI9341","Adafruit GFX Library"
 
 script:
-   - build_platform mega2560
+   #- build_platform mega2560
+   -build_main_platforms
 
 # Generate and deploy documentation
 after_success:
