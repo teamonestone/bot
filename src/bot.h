@@ -86,11 +86,13 @@ class bot
 		uint16_t analog_read(uint8_t pin);			// read analog pin
 
 		// util functions
-        uint16_t get_version();                                         // get the version of the library
-		void delay(uint32_t _delay_time);			                    // delay based on millis() (milliseconds resolution)
-		void micro_delay(uint32_t _delay_time);		                    // delay based on micros() (microseconds resolution)
-        void delay_f(uint32_t _delay_time, void (*_funct)());			// delay based on millis() (milliseconds resolution) with function funct
-		void micro_delay_f(uint32_t _delay_time, void (*_funct)()));	// delay based on micros() (microseconds resolution) with funktion funct
+        uint16_t get_version();                                         						// get the version of the library
+		void delay(uint32_t _delay_time);			                    						// delay based on millis() (milliseconds resolution)
+		void micro_delay(uint32_t _delay_time);		                    						// delay based on micros() (microseconds resolution)
+        void delay_f(uint32_t _delay_time, void (*_funct)(uint64_t));							// delay based on millis() (milliseconds resolution) with function funct
+		void micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)));					// delay based on micros() (microseconds resolution) with funktion funct
+		void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));			// delay based on millis() (milliseconds resolution) with additional break condition
+		void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t));	// delay based on micros() (microseconds resolution) with additional break condition
 };
 
 #endif

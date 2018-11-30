@@ -339,18 +339,30 @@ void bot::micro_delay(uint32_t _delay_time) {
     while (micros() <= _time_to_wait);
 }
 
-void bot::delay_f(uint32_t _delay_time, void (*_funct)()) {
+void bot::delay_f(uint32_t _delay_time, void (*_funct)(uint64_t)) {
     uint64_t _time_to_wait = millis() + _delay_time;
 
     while (millis() <= _time_to_wait) {
-        _funct();
+        _funct(_time_to_wait);
     }
 }
 
-void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)())) {
+void bot::micro_delay_f(uint32_t _delay_time, void (*_funct)(uint64_t))) {
     uint64_t _time_to_wait = micros() + _delay_time;
 
     while (micros() <= _time_to_wait) {
-        _funct();
+        _funct(_time_to_wait);
     }
+}
+
+void delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
+    uint64_t _time_to_wait = millis() + _delay_time;
+
+    while (millis() <= _time_to_wait && _condition(_time_to_wait);
+}
+
+void micro_delay_with_condition(uint32_t _delay_time, bool (*_condition)(uint64_t)) {
+    uint64_t _time_to_wait = micros() + _delay_time;
+
+    while (micros() <= _time_to_wait && _condition(_time_to_wait);
 }
