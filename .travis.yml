@@ -18,4 +18,5 @@ before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 install:
 script:
-  - build_main_platforms
+  #- build_main_platforms
+  - build_platform mega2560
