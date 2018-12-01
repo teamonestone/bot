@@ -46,10 +46,10 @@ bot::bot() {
 
     // set the pins to the default values
     leds_off();
-    disableServo(1);
-    disableServo(2);
-    disableServo(3);
-    disableServo(4);
+    servoDisable(1);
+    servoDisable(2);
+    servoDisable(3);
+    servoDisable(4);
 }
 
 bot::~bot() {
