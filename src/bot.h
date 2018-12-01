@@ -10,7 +10,8 @@
 #define bot_h
 
 #include <inttypes.h>
-#include "Arduino.h"
+#include <Arduino.h>
+#include <Servo.h>
 
 ///////////////////////
 // some port defines //
@@ -62,7 +63,11 @@ class bot
 {
 	private:
         uint16_t const _lib_version = 100;
-	
+		Servo _SERVO_1;
+		Servo _SERVO_2;
+		Servo _SERVO_3;
+		Servo _SERVO_4;
+
 	public:
 
 		// Constructor
@@ -78,12 +83,24 @@ class bot
 		void led_off(uint8_t led);					///< Turn a specific led off.
 
 		// digital io functions
-		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< set io mode
-		bool digital_read(uint8_t pin);						///< read digital pin
-		void digital_write(uint8_t pin, bool state);		///< wirte to digital pin
+		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< Set the i/o mode of the selected digital pin.
+		bool digital_read(uint8_t pin);						///< Read digital value of the selected pin pin.
+		void digital_write(uint8_t pin, bool state);		///< Wirte to the selected digital pin.
 
 		// analog io functions
-		uint16_t analog_read(uint8_t pin);			///< read analog pin
+		uint16_t analog_read(uint8_t pin);			///< read analog pin.
+
+		// servo functions
+		void enableServo(uint8_t pin);				///< Enables the selected servo pin.
+		void enableServo(uint8_t pin);				///< Disables the selected servo pin.
+		bool servoEnabled(uint8_t pin);
+		void servoAttach(uint8_t pin);
+		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);
+		bool servoAttached(uint8_t pin);
+		void servoWrite(uint8_t pin, uint16_t angle);
+		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_second);
+		uint16_t servoRead(uint8_t pin);
+		void servoDetach(uint8_t pin);
 
 		// util functions
         uint16_t get_version();                                         						///< get the version of the library

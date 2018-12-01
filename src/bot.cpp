@@ -43,6 +43,13 @@ bot::bot() {
     pinMode(BOT_SE2, OUTPUT);
     pinMode(BOT_SE3, OUTPUT);
     pinMode(BOT_SE4, OUTPUT);
+
+    // set the pins to the default values
+    leds_off();
+    disableServo(1);
+    disableServo(2);
+    disableServo(3);
+    disableServo(4);
 }
 
 bot::~bot() {
@@ -357,6 +364,71 @@ uint16_t bot::analog_read(uint8_t pin) {
             return 0;
     }
 }
+
+/////////////////////
+// servo functions //
+/////////////////////
+
+void bot::enableServo(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            digitalWrite(BOT_SE1, 1);
+        break;
+
+        case 2:
+            digitalWrite(BOT_SE2, 1);
+        break;
+
+        case 3:
+            digitalWrite(BOT_SE3, 1);
+        break;
+
+        case 4:
+            digitalWrite(BOT_SE4, 1);
+        break;
+
+        default:
+            return;
+    }
+}
+
+void bot::enableServo(uint8_t pin) {
+// check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            digitalWrite(BOT_SE1, 0);
+        break;
+
+        case 2:
+            digitalWrite(BOT_SE2, 0);
+        break;
+
+        case 3:
+            digitalWrite(BOT_SE3, 0);
+        break;
+
+        case 4:
+            digitalWrite(BOT_SE4, 0);
+        break;
+
+        default:
+            return;
+    }
+}
+
+bool bot::servoEnabled(uint8_t pin);
+void bot::servoAttach(uint8_t pin);
+void bot::servoAttach(uint8_t pin, uint16_t min, uint16_t max);
+bool bot::servoAttached(uint8_t pin);
+void bot::servoWrite(uint8_t pin, uint16_t angle);
+void bot::servoWriteMicroseconds(uint8_t pin, uint16_t micro_second);
+uint16_t bot::servoRead(uint8_t pin);
+void bot::servoDetach(uint8_t pin);
 
 ////////////////////
 // util functions //
