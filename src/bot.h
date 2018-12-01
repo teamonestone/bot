@@ -63,10 +63,15 @@ class bot
 {
 	private:
         uint16_t const _lib_version = 100;
+
 		Servo _SERVO_1;
 		Servo _SERVO_2;
 		Servo _SERVO_3;
 		Servo _SERVO_4;
+		bool _SERVO_1_enabled;
+		bool _SERVO_2_enabled;
+		bool _SERVO_3_enabled;
+		bool _SERVO_4_enabled;
 
 	public:
 
@@ -91,14 +96,14 @@ class bot
 		uint16_t analog_read(uint8_t pin);			///< read analog pin.
 
 		// servo functions
-		void enableServo(uint8_t pin);				///< Enables the selected servo pin.
-		void enableServo(uint8_t pin);				///< Disables the selected servo pin.
+		void servoEnable(uint8_t pin);				///< Enables the selected servo pin.
+		void servoDisable(uint8_t pin);				///< Disables the selected servo pin.
 		bool servoEnabled(uint8_t pin);
 		void servoAttach(uint8_t pin);
 		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);
 		bool servoAttached(uint8_t pin);
 		void servoWrite(uint8_t pin, uint16_t angle);
-		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_second);
+		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds);
 		uint16_t servoRead(uint8_t pin);
 		void servoDetach(uint8_t pin);
 
