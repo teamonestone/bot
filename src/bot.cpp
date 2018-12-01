@@ -46,10 +46,10 @@ bot::bot() {
 
     // set the pins to the default values
     leds_off();
-    disableServo(1);
-    disableServo(2);
-    disableServo(3);
-    disableServo(4);
+    servoDisable(1);
+    servoDisable(2);
+    servoDisable(3);
+    servoDisable(4);
 }
 
 bot::~bot() {
@@ -369,25 +369,29 @@ uint16_t bot::analog_read(uint8_t pin) {
 // servo functions //
 /////////////////////
 
-void bot::enableServo(uint8_t pin) {
+void bot::servoEnable(uint8_t pin) {
     // check if input is in range
     if (pin < 1 || pin > 4) return;
 
     switch(pin) {
         case 1: 
             digitalWrite(BOT_SE1, 1);
+            _SERVO_1_enabled = true;
         break;
 
         case 2:
             digitalWrite(BOT_SE2, 1);
+            _SERVO_2_enabled = true;
         break;
 
         case 3:
             digitalWrite(BOT_SE3, 1);
+            _SERVO_3_enabled = true;
         break;
 
         case 4:
             digitalWrite(BOT_SE4, 1);
+            _SERVO_4_enabled = true;
         break;
 
         default:
@@ -395,25 +399,29 @@ void bot::enableServo(uint8_t pin) {
     }
 }
 
-void bot::enableServo(uint8_t pin) {
-// check if input is in range
+void bot::servoDisable(uint8_t pin) {
+    // check if input is in range
     if (pin < 1 || pin > 4) return;
 
     switch(pin) {
         case 1: 
             digitalWrite(BOT_SE1, 0);
+            _SERVO_1_enabled = false;
         break;
 
         case 2:
             digitalWrite(BOT_SE2, 0);
+            _SERVO_2_enabled = false;
         break;
 
         case 3:
             digitalWrite(BOT_SE3, 0);
+            _SERVO_3_enabled = false;
         break;
 
         case 4:
             digitalWrite(BOT_SE4, 0);
+            _SERVO_4_enabled = false;
         break;
 
         default:
@@ -421,14 +429,213 @@ void bot::enableServo(uint8_t pin) {
     }
 }
 
-bool bot::servoEnabled(uint8_t pin);
-void bot::servoAttach(uint8_t pin);
-void bot::servoAttach(uint8_t pin, uint16_t min, uint16_t max);
-bool bot::servoAttached(uint8_t pin);
-void bot::servoWrite(uint8_t pin, uint16_t angle);
-void bot::servoWriteMicroseconds(uint8_t pin, uint16_t micro_second);
-uint16_t bot::servoRead(uint8_t pin);
-void bot::servoDetach(uint8_t pin);
+bool bot::servoEnabled(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return false;
+
+    switch(pin) {
+        case 1: 
+            return _SERVO_1_enabled;
+        break;
+
+        case 2:
+            return _SERVO_1_enabled;
+        break;
+
+        case 3:
+            return _SERVO_1_enabled;
+        break;
+
+        case 4:
+            return _SERVO_1_enabled;
+        break;
+
+        default:
+            return false;
+    }
+}
+
+void bot::servoAttach(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            _SERVO_1.attach(BOT_S1);
+        break;
+
+        case 2:
+            _SERVO_2.attach(BOT_S2);
+        break;
+
+        case 3:
+            _SERVO_3.attach(BOT_S3);
+        break;
+
+        case 4:
+            _SERVO_4.attach(BOT_S4);
+        break;
+
+        default:
+            return;
+    }
+}
+
+void bot::servoAttach(uint8_t pin, uint16_t min, uint16_t max) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            _SERVO_1.attach(BOT_S1, min, max);
+        break;
+
+        case 2:
+            _SERVO_2.attach(BOT_S2, min, max);
+        break;
+
+        case 3:
+            _SERVO_3.attach(BOT_S3, min, max);
+        break;
+
+        case 4:
+            _SERVO_4.attach(BOT_S4, min, max);
+        break;
+
+        default:
+            return;
+    }
+}
+
+bool bot::servoAttached(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return false;
+
+    switch(pin) {
+        case 1: 
+            return _SERVO_1.attached();
+        break;
+
+        case 2:
+            return _SERVO_2.attached();
+        break;
+
+        case 3:
+            return _SERVO_3.attached();
+        break;
+
+        case 4:
+            return _SERVO_4.attached();
+        break;
+
+        default:
+            return;
+    }
+}
+
+void bot::servoWrite(uint8_t pin, uint16_t angle) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            _SERVO_1.write(angle);
+        break;
+
+        case 2:
+            _SERVO_2.write(angle);
+        break;
+
+        case 3:
+            _SERVO_3.write(angle);
+        break;
+
+        case 4:
+            _SERVO_4.write(angle);
+        break;
+
+        default:
+            return;
+    }
+}
+
+void bot::servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            _SERVO_1.writeMicroseconds(micro_seconds);
+        break;
+
+        case 2:
+            _SERVO_2.writeMicroseconds(micro_seconds);
+        break;
+
+        case 3:
+            _SERVO_3.writeMicroseconds(micro_seconds);
+        break;
+
+        case 4:
+            _SERVO_4.writeMicroseconds(micro_seconds);
+        break;
+
+        default:
+            return;
+    }
+}
+
+uint16_t bot::servoRead(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return 0;
+
+    switch(pin) {
+        case 1: 
+            return _SERVO_1.read();
+        break;
+
+        case 2:
+            return _SERVO_2.read();
+        break;
+
+        case 3:
+            return _SERVO_3.read();
+        break;
+
+        case 4:
+            return _SERVO_4.read();
+        break;
+
+        default:
+            return;
+    }
+}
+
+void bot::servoDetach(uint8_t pin) {
+    // check if input is in range
+    if (pin < 1 || pin > 4) return;
+
+    switch(pin) {
+        case 1: 
+            _SERVO_1.detach();
+        break;
+
+        case 2:
+            _SERVO_2.detach();
+        break;
+
+        case 3:
+            _SERVO_3.detach();
+        break;
+
+        case 4:
+            _SERVO_4.detach();
+        break;
+
+        default:
+            return;
+    }
+}
 
 ////////////////////
 // util functions //
