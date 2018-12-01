@@ -1,5 +1,5 @@
 # Our handy .gitignore for automation ease
-Doxyfile*
+#Doxyfile*
 doxygen_sqlite3.db
 html
 
