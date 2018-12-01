@@ -4,6 +4,9 @@ branches:
   - develop
 language: c
 sudo: false
+env:
+  global:
+    - PRETTYNAME="The 'bot' - Library"
 cache:
   directories:
     - ~/arduino_ide
@@ -20,3 +23,6 @@ install:
 script:
   #- build_main_platforms
   - build_platform mega2560
+after_success:
+  #- source <(curl -SLs  https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/library_check.sh)
+  - source <(curl -SLs  https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/doxy_gen_and_deploy.sh)
