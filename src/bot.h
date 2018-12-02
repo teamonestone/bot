@@ -63,7 +63,10 @@
 #define BOT_LED5 36		///< LED 5 on the shield mapped to arduino digital pin 36.
 #define BOT_LED6 37		///< LED 6 on the shield mapped to arduino digital pin 37.
 
-class bot
+/**
+ * The main bot class.
+ */
+class bot				///< The main bot class.
 {
 	private:
         uint16_t const _lib_version = 100;
