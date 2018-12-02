@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['bot',['bot',['../classbot.html',1,'bot'],['../classbot.html#aed96771f8ab599f53e24eb05580d733d',1,'bot::bot()']]],
-  ['bot_2ecpp',['bot.cpp',['../bot_8cpp.html',1,'']]],
-  ['bot_2eh',['bot.h',['../bot_8h.html',1,'']]],
   ['bot_5fa1',['BOT_A1',['../bot_8h.html#af9342407dff80670949504a5d4dbc22b',1,'bot.h']]],
   ['bot_5fa2',['BOT_A2',['../bot_8h.html#ab9b8c8ae8a592129f768753c0f4f7683',1,'bot.h']]],
   ['bot_5fa3',['BOT_A3',['../bot_8h.html#ad447fcfbf368821bbc368a55b69aa0d6',1,'bot.h']]],
@@ -32,6 +29,5 @@ var searchData=
   ['bot_5fse1',['BOT_SE1',['../bot_8h.html#a918b365d6048964b8cdaf963e2713596',1,'bot.h']]],
   ['bot_5fse2',['BOT_SE2',['../bot_8h.html#a2721169eb61020c15f27622bd1a7f3f1',1,'bot.h']]],
   ['bot_5fse3',['BOT_SE3',['../bot_8h.html#ad7e0306ef59aa5e85c5df379c6504791',1,'bot.h']]],
-  ['bot_5fse4',['BOT_SE4',['../bot_8h.html#a5c40bc59d406b8bd48881e0d466fe1a4',1,'bot.h']]],
-  ['button',['button',['../classbot.html#add89f84cf1fa0b07b4dcd698c8c47d4c',1,'bot']]]
+  ['bot_5fse4',['BOT_SE4',['../bot_8h.html#a5c40bc59d406b8bd48881e0d466fe1a4',1,'bot.h']]]
 ];
