@@ -1,13 +1,13 @@
-/*!
+/**
  * @file bot.h
- *
- * This is the documentation for the 'bot' library. The library is 
- * designed to work with <a href="https://github.com/team-onestone/ArduinoMegaShields/tree/master/DistributionBoard">
- * this</a> shield for an arduino mega 2560.
- * 
- * Written by Jonas Merkle [JJM] for Team Onestone.
- * 
- * GNU General Public License v3.0
+ * @brief The header file of the 'bot' library.
+ * @author Jonas Merkle [JJM]
+ * @author 
+ * This library is maintained by <a href="https://team-onestone.net">Team Onestone</a>.
+ * E-Mail: <a href="mailto:info@team-onestone.net">info@team-onestone.net</a>
+ * @version 1.0.0
+ * @date 02 December 2018
+ * @copyright This project is released under the GNU General Public License v3.0
  */
 
 #ifndef bot_h
@@ -64,22 +64,12 @@
 #define BOT_LED6 37		///< LED 6 on the shield mapped to arduino digital pin 37.
 
 /**
- * The main bot class.
+ * @class bot
+ * @brief The main class of the 'bot' library.
  */
 class bot				///< The main bot class.
 {
-	private:
-        uint16_t const _lib_version = 100;
-
-		Servo _SERVO_1;
-		Servo _SERVO_2;
-		Servo _SERVO_3;
-		Servo _SERVO_4;
-		bool _SERVO_1_enabled;
-		bool _SERVO_2_enabled;
-		bool _SERVO_3_enabled;
-		bool _SERVO_4_enabled;
-
+// Begin PUBLIC ------------------------------------------------------------------
 	public:
 
 		// Constructor
@@ -122,6 +112,28 @@ class bot				///< The main bot class.
 		void micro_delay_f(uint32_t delay_time, void (*funct)(uint64_t));						///< Delay based on micros() with function call during the delay  (microseconds resolution).
 		void delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));			///< Delay based on millis() with additional break condition (milliseconds resolution).
 		void micro_delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));		///< Delay based on micros() with additional break condition (microseconds resolution).
+
+// End PUBLIC --------------------------------------------------------------------
+
+// Begin PRIVATE -----------------------------------------------------------------
+	private:
+
+		// constants
+        uint16_t const _lib_version = 100;
+
+		// objects
+		Servo _SERVO_1;
+		Servo _SERVO_2;
+		Servo _SERVO_3;
+		Servo _SERVO_4;
+
+		// variables
+		bool _SERVO_1_enabled;
+		bool _SERVO_2_enabled;
+		bool _SERVO_3_enabled;
+		bool _SERVO_4_enabled;
+
+// End PRIVATE -------------------------------------------------------------------
 };
 
 #endif
