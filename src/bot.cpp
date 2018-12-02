@@ -5,7 +5,7 @@
  *
  * @section intro_sec Introduction
  *
- * This is the documentation for the 'bot' library. this library is 
+ * This is the documentation for the 'bot' library. The library is 
  * designed to work with <a href="https://github.com/team-onestone/ArduinoMegaShields/tree/master/DistributionBoard">
  * this</a> shield for an arduino mega 2560.
  *
