@@ -592,7 +592,7 @@ void bot::servoAttach(uint8_t pin, uint16_t min, uint16_t max) {
 }
 
 /**
- * @brief Checks if a servor is attached to the selected pin.
+ * @brief Checks if a servo is attached to the selected pin.
  * 
  * @param pin number of selected servo pin.
  * @return 1 if selected servo is attached to the pin, else 0.
@@ -624,10 +624,10 @@ bool bot::servoAttached(uint8_t pin) {
 }
 
 /**
- * @brief Wirte a new position value in degree to the servo on the selected pin.
+ * @brief Wirte a new position value in degrees to the servo on the selected pin.
  * 
  * @param pin number of selected servo pin.
- * @param angle new position of the selected servo in degree.
+ * @param angle new position of the selected servo in degrees.
  */
 void bot::servoWrite(uint8_t pin, uint16_t angle) {
     // check if input is in range
