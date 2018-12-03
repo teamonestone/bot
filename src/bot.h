@@ -73,16 +73,16 @@ class bot
 	public:
 
 		// Constructor
-		bot();				///< Basic constructor for the bot class.
-		~bot();				///< Basic destructor for the bot class.
+		bot();				// Basic constructor for the bot class.
+		~bot();				// Basic destructor for the bot class.
 		
 		// basic functions
-		bool button(uint8_t button);				///< Read the state of a button.
-		void wait_button(uint8_t button);			///< Wait until a button is pressed.
-		void leds_on();								///< Turn all leds on.
-		void leds_off();							///< Turn all leds off.
-		void led_on(uint8_t led);					///< Turn a specific led on.
-		void led_off(uint8_t led);					///< Turn a specific led off.
+		bool button(uint8_t button);				// Read the state of a button.
+		void wait_button(uint8_t button);			// Wait until a button is pressed.
+		void leds_on();								// Turn all leds on.
+		void leds_off();							// Turn all leds off.
+		void led_on(uint8_t led);					// Turn a specific led on.
+		void led_off(uint8_t led);					// Turn a specific led off.
 
 		// digital io functions
 		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< Set the i/o mode of the selected digital pin.
@@ -97,7 +97,7 @@ class bot
 		void servoDisable(uint8_t pin);										///< Disables the selected servo pin.
 		bool servoEnabled(uint8_t pin);										///< Checks if a given servo pin is enabled.
 		void servoAttach(uint8_t pin);										///< Attach a servo on a given pin.
-		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);			///< Attach a servo on a given pin and set minimum an maximum position values.
+		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);			///< Attach a servo on a given pin and set minimum and maximum position values.
 		bool servoAttached(uint8_t pin);									///< Checks if a servor is attached to the selected pin.
 		void servoWrite(uint8_t pin, uint16_t angle);						///< Wirte a new position value in degrees to the servo on the selected pin.
 		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds);	///< Wirte a new position value in micro-seconds to the servo on the selected pin.
