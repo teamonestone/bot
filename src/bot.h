@@ -67,7 +67,7 @@
  * @class bot
  * @brief The main class of the 'bot' library.
  */
-class bot				///< The main bot class.
+class bot
 {
 // Begin PUBLIC ------------------------------------------------------------------
 	public:
