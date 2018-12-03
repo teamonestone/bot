@@ -559,7 +559,7 @@ void bot::servoAttach(uint8_t pin) {
 }
 
 /**
- * @brief Attach a servo on a given pin and set minimum an maximum position values.
+ * @brief Attach a servo on a given pin and set minimum and maximum position values.
  * 
  * @param pin number of selected servo pin.
  * @param min minimum position value of the servo.
