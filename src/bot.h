@@ -67,7 +67,7 @@
  * @class bot
  * @brief The main class of the 'bot' library.
  */
-class bot				///< The main bot class.
+class bot
 {
 // Begin PUBLIC ------------------------------------------------------------------
 	public:
@@ -99,7 +99,7 @@ class bot				///< The main bot class.
 		void servoAttach(uint8_t pin);										///< Attach a servo on a given pin.
 		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);			///< Attach a servo on a given pin and set minimum an maximum position values.
 		bool servoAttached(uint8_t pin);									///< Checks if a servor is attached to the selected pin.
-		void servoWrite(uint8_t pin, uint16_t angle);						///< Wirte a new position value in degree to the servo on the selected pin.
+		void servoWrite(uint8_t pin, uint16_t angle);						///< Wirte a new position value in degrees to the servo on the selected pin.
 		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds);	///< Wirte a new position value in micro-seconds to the servo on the selected pin.
 		uint16_t servoRead(uint8_t pin);									///< Read the current postion of the selected servo.
 		void servoDetach(uint8_t pin);										///< Detach a servo from the selected servo pin.
