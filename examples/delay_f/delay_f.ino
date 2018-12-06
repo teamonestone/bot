@@ -1,25 +1,31 @@
 /**
- * Example für die Verwendung der Funktion delay_f(), da diese mit der Verwendung von Funktionszeigern etwas schwieriger zu verstehen
- * ist
- * @author Dominik Authaler
+ * Example for the usage of the delay_f() method, because this one uses fuctions pointers which make it a bit more difficult to
+ * understand. 
+ * @author Dominik
  */
 
-//Nicht vergessen: Die Library muss eingebunden werden!
+//Never forget including the library!
 #include "bot.h";
 
-/*
- * Erzeugen des notwendigen Objekts, da die Library objektorientiert aufgebaut ist. Der wichtigste Unterschied zur bisherigen, nicht 
- * objektorientierten Programmierung, liegt darin, dass nun Methoden und Variablen zu Objekten zusammengefasst werden. Insbesondere
- * bedeutet dies, dass ihr die Methoden, welche in der Datei bot.h aufgelistet sind, nur auf einem Bot Objekt aufrufen könnt!  
- * Symbolisiert wird dies durch die Struktur "Objektname"."Methodenname" (vgl. Serial.begin(), ihr habt unbewusst die 
- * Objektorientierung die ganze Zeit schon verwendet ;-)). Bei unterem Aufruf ist das erste "bot" der Klassenname, das Zweite 
- * gibt den Namen des Objekts an (vgl. Erstellen von Variablen).
- */
+ /*
+  * Creation of the object, which is necessary, sice this libray uses the object oriented paradigm. The main difference to the
+  * imperative programming paradigm is, that methods and variables are grouped together to objects. Thus it's not possible do 
+  * use the methods definded in the class bot without an instance of the class (except for static methods, which aren't used here). 
+  * This can be also seen in the structure when calling such an method, which is "object-name"."method-name" 
+  * (compare it to Serial.begin(), you've used object oriented parts all the 
+  * time, although the Serial.begin() method is static and therefore needs no real instance of the class Serial. Looking at the line
+  * below, the first "bot" stands for the name of the class, and the second "bot" is the name of the new created object. It's almost
+  * the same as the creation of primitive variables. All the stuff you can do with them can be also done with objects, e.g. summing 
+  * them up in arrays.
+  */
 bot bot;
 
-//Dem Compiler die Grundstruktur der verwendeten Methoden klar machen --> lediglich Typen, Angabe von Variablennamen ist optional
-//Man beachte, dass der Aufbau dem aus der Header-Datei folgt. Diese gibt vor, dass der Methode delay_f() eine Funktionszeiger auf
-//eine void liefernde und uint64_t als Übergabeparamter annehmende Methode übergeben werden muss. 
+/*
+ * Showing the compiler the structure of the methods later defined. It's not necessary to specify the names of the params, but 
+ * their type is essential. Please be aware, that the structure is the same as stated in der bot.h, where the method delay_f() is 
+ * defined. There it's stated, that the method returns nothing (thus type void) and takes on param with the type uint64_t. This type
+ * stands for an unsigned integer with 64 bits. 
+ */ 
 void toTrigger(uint64_t);
 
 void setup() {
@@ -27,19 +33,21 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Starte delay");
-  //Die Übergabe des Funktionszeigers ist denkbar einfach, ihr schreibt einfach den Namen der Methode hin ;)
+  Serial.println("Beginning delay");
+  //Using a function pointer as param for a method is quite simple, the only thing you need to do is writing the name of the method ;)
   bot.delay_f(500, toTrigger);
-  Serial.println("Ende delay");
+  Serial.println("End of Delay");
 
-  //Als Vergleich, hier wird alles blockiert bis die Zeit abgelaufen ist!
+  //To compare it to the normal delay --> there's nothing triggered while waiting for the end!
   delay(500);
 }
 
-//Diese Methoden wollen wir während des Wartens mittels delay_f immer wieder aufrufen. Übergeben wird ihr von delay_f dabei
-//die noch im delay verbleibende Zeit. Eine mögliche Anwendung wäre es also, hier in definierten Intervallen die 
-//Ultraschallsensoren abzufragen. Dazu ist es dann noch notwendig, sich mit millis() die aktuelle Systemzeit zu besorgen
-//und eventuell in einer globalen Variable zu speichern, wann das letzte Mal die Sensoren abgefragt wurden.
+/*
+ * This is the method we want to trigger whilst waiting until the specified time in the delay has passed. The method receives 
+ * the remaining time to the end of the delay (in milliseconds), therefore this method could be used to trigger the ultrasonic
+ * measures whilst waiting a certain time. To implement this, there will be also the need of a global variable, which saves, when
+ * the last measurement was started. The system time can be evaluated by calling millis().
+ */
 void toTrigger(uint64_t) {
     Serial.println("Triggered");
 }
