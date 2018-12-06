@@ -73,45 +73,45 @@ class bot
 	public:
 
 		// Constructor
-		bot();				///< Basic constructor for the bot class.
-		~bot();				///< Basic destructor for the bot class.
+		bot();				// Basic constructor for the bot class.
+		~bot();				// Basic destructor for the bot class.
 		
 		// basic functions
-		bool button(uint8_t button);				///< Read the state of a button.
-		void wait_button(uint8_t button);			///< Wait until a button is pressed.
-		void leds_on();								///< Turn all leds on.
-		void leds_off();							///< Turn all leds off.
-		void led_on(uint8_t led);					///< Turn a specific led on.
-		void led_off(uint8_t led);					///< Turn a specific led off.
+		bool button(uint8_t button);				// Read the state of a button.
+		void wait_button(uint8_t button);			// Wait until a button is pressed.
+		void leds_on();								// Turn all leds on.
+		void leds_off();							// Turn all leds off.
+		void led_on(uint8_t led);					// Turn a specific led on.
+		void led_off(uint8_t led);					// Turn a specific led off.
 
 		// digital io functions
-		void set_io_mode(uint8_t pin, uint8_t pin_mode);	///< Set the i/o mode of the selected digital pin.
-		bool digital_read(uint8_t pin);						///< Read digital value of the selected pin pin.
-		void digital_write(uint8_t pin, bool state);		///< Wirte to the selected digital pin.
+		void set_io_mode(uint8_t pin, uint8_t pin_mode);	// Set the i/o mode of the selected digital pin.
+		bool digital_read(uint8_t pin);						// Read digital value of the selected pin pin.
+		void digital_write(uint8_t pin, bool state);		// Wirte to the selected digital pin.
 
 		// analog io functions
-		uint16_t analog_read(uint8_t pin);			///< Read the analog value on the selected pin.
+		uint16_t analog_read(uint8_t pin);			// Read the analog value on the selected pin.
 
 		// servo functions
-		void servoEnable(uint8_t pin);										///< Enables the selected servo pin.
-		void servoDisable(uint8_t pin);										///< Disables the selected servo pin.
-		bool servoEnabled(uint8_t pin);										///< Checks if a given servo pin is enabled.
-		void servoAttach(uint8_t pin);										///< Attach a servo on a given pin.
-		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);			///< Attach a servo on a given pin and set minimum an maximum position values.
-		bool servoAttached(uint8_t pin);									///< Checks if a servor is attached to the selected pin.
-		void servoWrite(uint8_t pin, uint16_t angle);						///< Wirte a new position value in degrees to the servo on the selected pin.
-		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds);	///< Wirte a new position value in micro-seconds to the servo on the selected pin.
-		uint16_t servoRead(uint8_t pin);									///< Read the current postion of the selected servo.
-		void servoDetach(uint8_t pin);										///< Detach a servo from the selected servo pin.
+		void servoEnable(uint8_t pin);										// Enables the selected servo pin.
+		void servoDisable(uint8_t pin);										// Disables the selected servo pin.
+		bool servoEnabled(uint8_t pin);										// Checks if a given servo pin is enabled.
+		void servoAttach(uint8_t pin);										// Attach a servo on a given pin.
+		void servoAttach(uint8_t pin, uint16_t min, uint16_t max);			// Attach a servo on a given pin and set minimum and maximum position values.
+		bool servoAttached(uint8_t pin);									// Checks if a servor is attached to the selected pin.
+		void servoWrite(uint8_t pin, uint16_t angle);						// Wirte a new position value in degrees to the servo on the selected pin.
+		void servoWriteMicroseconds(uint8_t pin, uint16_t micro_seconds);	// Wirte a new position value in micro-seconds to the servo on the selected pin.
+		uint16_t servoRead(uint8_t pin);									// Read the current postion of the selected servo.
+		void servoDetach(uint8_t pin);										// Detach a servo from the selected servo pin.
 
 		// util functions
-        uint16_t get_version();                                         						///< Get the version of the library.
-		void delay(uint32_t delay_time);			                    						///< Delay based on millis() (milliseconds resolution).
-		void micro_delay(uint32_t delay_time);		                    						///< Delay based on micros() (microseconds resolution).
-        void delay_f(uint32_t delay_time, void (*funct)(uint64_t));								///< Delay based on millis() with function call during the delay (milliseconds resolution).
-		void micro_delay_f(uint32_t delay_time, void (*funct)(uint64_t));						///< Delay based on micros() with function call during the delay  (microseconds resolution).
-		void delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));			///< Delay based on millis() with additional break condition (milliseconds resolution).
-		void micro_delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));		///< Delay based on micros() with additional break condition (microseconds resolution).
+        uint16_t get_version();                                         						// Get the version of the library.
+		void delay(uint32_t delay_time);			                    						// Delay based on millis() (milliseconds resolution).
+		void micro_delay(uint32_t delay_time);		                    						// Delay based on micros() (microseconds resolution).
+        void delay_f(uint32_t delay_time, void (*funct)(uint64_t));								// Delay based on millis() with function call during the delay (milliseconds resolution).
+		void micro_delay_f(uint32_t delay_time, void (*funct)(uint64_t));						// Delay based on micros() with function call during the delay  (microseconds resolution).
+		void delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));			// Delay based on millis() with additional break condition (milliseconds resolution).
+		void micro_delay_with_condition(uint32_t delay_time, bool (*condition)(uint64_t));		// Delay based on micros() with additional break condition (microseconds resolution).
 
 // End PUBLIC --------------------------------------------------------------------
 
