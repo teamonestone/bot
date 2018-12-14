@@ -786,3 +786,5 @@ ASALocalRun/
 .localhistory/
 
 # End of https://www.gitignore.io/api/c,git,c++,eagle,linux,macos,windows,eclipse,clion+all,platformio,atmelstudio,visualstudio,visualstudiocode,openframeworks+visualstudio
+examples/delay_f/bot.cpp
+examples/delay_f/bot.h

@@ -110,16 +110,16 @@ bool bot::button(uint8_t button) {
 
     switch(button) {
         case 1: 
-            return ~(digitalRead(BOT_B1));
+            return !(digitalRead(BOT_B1));
 
         case 2:
-            return ~(digitalRead(BOT_B2));
+            return !(digitalRead(BOT_B2));
 
         case 3:
-            return ~(digitalRead(BOT_B3));
+            return !(digitalRead(BOT_B3));
 
         case 4:
-            return ~(digitalRead(BOT_B4));
+            return !(digitalRead(BOT_B4));
 
         default:
             return false;
