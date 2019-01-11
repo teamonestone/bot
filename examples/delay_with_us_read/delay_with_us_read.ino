@@ -16,13 +16,13 @@ int16_t distanceValueOfUsSeonsors[NUMBER_OF_US_SENSORS] = {0};  // the last meas
 bool usSensorIsReadyToMeassure[NUMBER_OF_US_SENSORS] = {0};
 
 // global functions 
-void updateUS(uint64_t);
-void initUS();
-int16_t getUsValue(uint8_t);
+void updateUS(uint64_t);        // try to update all us sensors
+void initUS();                  // initialize the us sensors
+int16_t getUsValue(uint8_t);    // return the value of an us sensor
 
 // global internal functions
-void startUsMeassurement(uint8_t);
-void readValueFromUs(uint8_t);
+void startUsMeassurement(uint8_t);  // function to start an us measuerement (internal use only!)
+void readValueFromUs(uint8_t);      // function to read an velaue form an us sensor (internal use only!)
 
 // arduino setup routine
 void setup() {
@@ -60,7 +60,7 @@ int16_t getUsValue(uint8_t usSensorNumber) {
     if (usSensorNumber < 1 || usSensorNumber > NUMBER_OF_US_SENSORS)
         return -10;
     else 
-        return distanceValueOfUsSeonsors[usSensorNumber];
+        return distanceValueOfUsSeonsors[usSensorNumber-1];
 }
 
 void updateUS(uint64_t endTimeOfDelay) {
