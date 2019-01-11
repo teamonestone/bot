@@ -1,0 +1,94 @@
+// include section
+#include "bot.h"
+#include <Wire.h>
+
+// define section
+#define NUMBER_OF_US_SENSORS 3          // the number of connected us sensors
+#define RAED_DELAY_US_SENSORS 75        // the time a us sensor takes to do a range meassurement
+
+// global objects
+bot bot;
+
+// global values
+uint8_t usSensorAddress[NUMBER_OF_US_SENSORS] = {0};            // the i2c address of the different us sensors
+uint64_t timeOfLastUsRead[NUMBER_OF_US_SENSORS] = {0};          // the time at which the us sensor startet the measurement
+int16_t distanceValueOfUsSeonsors[NUMBER_OF_US_SENSORS] = {0};  // the last meassured distance of an us sensor in cm
+bool usSensorIsReadyToMeassure[NUMBER_OF_US_SENSORS] = {0};
+
+// global functions 
+void updateUS(uint64_t);
+void initUS();
+int16_t getUsValue(uint8_t);
+void startUsMeassurement(uint8_t);
+void readValueFromUs(uint8_t);
+
+// arduino setup routine
+void setup() {
+    Serial.begin(9600);     // initialize serial port
+    initUS();               // inizialize us sensors
+}
+
+// arduino main loop
+void loop() {
+
+}
+
+void getUsValue(uint8_t usSensorNumber) {
+    if (usSensorNumber < 1 || usSensorNumber > NUMBER_OF_US_SENSORS)
+        return -10;
+    else 
+        return distanceValueOfUsSeonsors[usSensorAddress];
+}
+
+void updateUS(uint64_t endTimeOfDelay) {
+    for (uint8_t i = 0; i < NUMBER_OF_US_SENSORS; i++) {
+
+    }
+}
+
+void initUS() {
+    // init i2c bus (join as master)
+    Wire.begin();
+
+    // start a measuerement on all sensors
+    for (uint8_t i = 0; i < NUMBER_OF_US_SENSORS; i++) {
+        startUsMeassurement(i);
+    }
+}
+
+void startUsMeassurement(uint8_t usSensorNumber) {
+    if (usSensorNumber < 0 || usSensorNumber >= NUMBER_OF_US_SENSORS)
+        return;
+    else {
+        // start a meassurement
+        Wire.beginTransmission(usSensorAddress[usSensorNumber]);
+        Wire.write(byte(0x00));
+        Wire.write(byte(0x51));
+        Wire.endTransmission();
+    }
+}
+
+void readValueFromUs(uint8_t usSensorNumber) {
+    if (usSensorNumber < 0 || usSensorNumber >= NUMBER_OF_US_SENSORS)
+        return;
+    else {
+        // set the cursor to the output register
+        Wire.beginTransmission(usSensorAddress[usSensorNumber]);
+        Wire.write(byte(0x02));
+        Wire.endTransmission();
+
+        // request the reading ot 2 bytes from us sensor
+        Wire.requestFrom(usSensorAddress[usSensorNumber], 2);
+
+        // read the 2 bytes with the resault of the measurement from the us sensor
+        if (2 <= Wire.available()) {
+            int16_t reading = Wire.read();
+            reading = reading << 8;
+            reading |= Wire.read();
+            distanceValueOfUsSeonsors[usSensorNumber] = reading;
+        }
+        else {
+            distanceValueOfUsSeonsors[usSensorNumber] = -1;
+        }
+    }
+}
