@@ -27,13 +27,27 @@ void readValueFromUs(uint8_t);
 // arduino setup routine
 void setup() {
     Serial.begin(9600);     // initialize serial port
-    initUS();               // inizialize us sensors
+
+    // set i2c addresse 
+    usSensorAddress[0] = 112;
+    usSensorAddress[1] = 114;
+    usSensorAddress[2] = 116;
+
+    // inizialize us sensors
+    initUS();
 }
 
 // arduino main loop
 void loop() {
 
-     bot.delay_f(500, updateUS);
+    bot.delay_f(500, updateUS);
+
+    for (uint8_t i =  1; i <= NUMBER_OF_US_SENSORS; i++) {
+        Serial.print("US-Sensor ");
+        Serial.print(i);
+        Serial.print(": ");
+        Serial.println(getUsValue(i));
+    }
 
 }
 
