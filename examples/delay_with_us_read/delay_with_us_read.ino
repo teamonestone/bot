@@ -4,7 +4,7 @@
 
 // define section
 #define NUMBER_OF_US_SENSORS 3          // the number of connected us sensors
-#define RAED_DELAY_US_SENSORS 75        // the time a us sensor takes to do a range meassurement
+#define READ_DELAY_US_SENSORS 75        // the time a us sensor takes to do a range meassurement
 
 // global objects
 bot bot;
@@ -19,6 +19,8 @@ bool usSensorIsReadyToMeassure[NUMBER_OF_US_SENSORS] = {0};
 void updateUS(uint64_t);
 void initUS();
 int16_t getUsValue(uint8_t);
+
+// global internal functions
 void startUsMeassurement(uint8_t);
 void readValueFromUs(uint8_t);
 
@@ -31,18 +33,39 @@ void setup() {
 // arduino main loop
 void loop() {
 
+     bot.delay_f(500, updateUS);
+
 }
 
-void getUsValue(uint8_t usSensorNumber) {
+
+///////////////////////////////////////////
+// Implementation of US Sensor functions //
+///////////////////////////////////////////
+
+int16_t getUsValue(uint8_t usSensorNumber) {
     if (usSensorNumber < 1 || usSensorNumber > NUMBER_OF_US_SENSORS)
         return -10;
     else 
-        return distanceValueOfUsSeonsors[usSensorAddress];
+        return distanceValueOfUsSeonsors[usSensorNumber];
 }
 
 void updateUS(uint64_t endTimeOfDelay) {
+    // check if a measurement needs to be startet
     for (uint8_t i = 0; i < NUMBER_OF_US_SENSORS; i++) {
+        if (usSensorIsReadyToMeassure[i]) {
+            startUsMeassurement(i);
+        }
+    }
 
+    // check if delay is over
+    if (millis() >= endTimeOfDelay) return;
+
+    // chekc if a meassured value could be read
+    for (uint8_t i = 0; i < NUMBER_OF_US_SENSORS; i++) {
+        if (!usSensorIsReadyToMeassure[i] 
+        && millis() >= timeOfLastUsRead[i] + READ_DELAY_US_SENSORS) {
+            readValueFromUs(i);
+        }  
     }
 }
 
@@ -65,6 +88,12 @@ void startUsMeassurement(uint8_t usSensorNumber) {
         Wire.write(byte(0x00));
         Wire.write(byte(0x51));
         Wire.endTransmission();
+
+        // set flag 
+        usSensorIsReadyToMeassure[usSensorNumber] = false;
+
+        // set measurement start time
+        timeOfLastUsRead[usSensorNumber] = millis();
     }
 }
 
@@ -90,5 +119,8 @@ void readValueFromUs(uint8_t usSensorNumber) {
         else {
             distanceValueOfUsSeonsors[usSensorNumber] = -1;
         }
+
+        // set flag 
+        usSensorIsReadyToMeassure[usSensorNumber] = true;
     }
 }
