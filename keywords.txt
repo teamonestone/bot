@@ -22,6 +22,7 @@ micro_delay_with_condition	KEYWORD2
 
 button	KEYWORD2
 wait_button	KEYWORD2
+wait_any_button	KEYWORD2
 leds_on	KEYWORD2
 leds_off	KEYWORD2
 led_on	KEYWORD2
