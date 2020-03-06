@@ -165,6 +165,20 @@ void bot::wait_button(uint8_t button) {
 }
 
 /**
+ * @brief Wait until any button is pressed.
+ */
+void bot::wait_any_button() {
+
+    while(digitalRead(BOT_B1) && 
+          digitalRead(BOT_B2) &&
+          digitalRead(BOT_B3) &&
+          digitalRead(BOT_B4));
+
+    // button debounce
+    delay(20);
+}
+
+/**
  * @brief Turn all leds on.
  */
 void bot::leds_on() {
